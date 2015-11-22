@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container   
+    ul.nav.nav-pills.nav-justified(role="tablist")
+      li(role="presentation")
+        a(href="/") Home
+      li(role="presentation" )
+        a(href="/facce") Facce da NaNoWriMo
+      //-li(role="presentation")
+        //-a(href="#") Stats
+    
+    if (message)
+      h1= title
+      .alert.alert-dismissible(class="alert-" + status, role="alert")
+        button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true") &times;
+        p= message
+    else
+      h1 Contatta il webmaster
+    
+    .container
+      form(id="contact-form", method="post", action="/contact")
+        .form-group
+          label Il tuo contatto email
+          input.form-control(type="email" name="email")
+        .form-group
+          label Oggetto
+          input.form-control(type="text" name="subject")
+        .form-group
+          label Messaggio
+          textarea.form-control(name="message")
+        input.btn.btn-primary(type="submit" value="Invia" name="submit")
+      
+  include footer.jade

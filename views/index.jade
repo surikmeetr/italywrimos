@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container   
+    ul.nav.nav-pills.nav-justified(role="tablist")
+      li.active(role="presentation")
+        a(href="/") Home
+      li(role="presentation" )
+        a(href="/facce") Facce da NaNoWriMo
+      //-li(role="presentation")
+        //-a(href="#") Stats
+     
+    
+    p Per comparire nella lista, fai un post in 
+      a(href=qui, title="Thread originale NaNoWriMo") questo thread
+      
+    if resultList.length > 0
+      each auth in resultList
+        p.auth-name= auth.name 
+        .progress
+          .progress-bar(
+            class="progress-bar-" + auth.color 
+            role="progressbar" 
+            aria-valuenow=auth.percent 
+            aria-valuemin="0" 
+            aria-valuemax="100" 
+            style="width:" + auth.percent + "%"
+          ) #{auth.totalWords}
+    else
+      p Nothing to see here!
+
+  include footer.jade
