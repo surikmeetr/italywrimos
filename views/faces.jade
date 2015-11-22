@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .container 
+    ul.nav.nav-pills.nav-justified(role="tablist")
+      li(role="presentation")
+        a(href="/") Home
+      li.active(role="presentation" )
+        a(href="/facce") Facce da NaNoWriMo
+      li(role="presentation")
+        a(href="#") Stats
+       
+    p Per comparire nella lista, fai un post in 
+      a(href=qui, title="Thread originale NaNoWriMo") questo thread
+          
+        
+  
+    if novel_details.length > 0
+      .cards
+      each auth in novel_details
+        .card
+          a(href="#" class="toggle-info info-btn")
+            span.glyphicon.glyphicon-info-sign(href="#" data-unicode="e086" aria-label="Info su autore" )
+          img(src=auth.avatar_link)
+          .card-title
+            h2= auth.name
+            p= auth.member_for
+          .card-history
+            each novel in auth.novels
+              .novel
+                h5.text-capitalize #{novel.title} (#{novel.year})
+                h5
+                  small= novel.genre
+                p
+                  small= novel.synopsis
+            
+    else
+      p Nothing to see here!
+      
+  include footer.jade
+  script(type="application/javascript", src="javascripts/faces.js")
