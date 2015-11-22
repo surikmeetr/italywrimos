@@ -60,3 +60,10 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 9000;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+app.set('port', server_port);
+app.listen(app.get('port'), server_ip_address);
+console.log("Listening on Port: " + server_port + " - On OP: " + server_ip_address);
