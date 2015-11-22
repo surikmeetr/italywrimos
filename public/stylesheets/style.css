@@ -4,6 +4,10 @@ p {
 a {
   color: #00b7ff;
 }
+.spaced {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 .jumbotron {
   text-align: center;
   background-color: transparent;
